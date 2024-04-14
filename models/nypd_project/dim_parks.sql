@@ -1,0 +1,13 @@
+{{ config(materialized='table') }}
+
+WITH parks_source AS (
+	SELECT DISTINCT  
+		COALESCE(parks_nm, 'UNKNOWN') AS parks
+	FROM 
+		{{ ref('nypd_trg') }} 
+	)
+SELECT 
+	upper(md5(parks)) AS parks_hkey,
+	parks
+FROM 
+	parks_source
