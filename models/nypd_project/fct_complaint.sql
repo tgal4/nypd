@@ -41,7 +41,7 @@ SELECT
 	suspect_age_group.age_group_hkey AS suspect_age_group_hkey,
 	victim_age_group.age_group_hkey AS victim_age_group_hkey,
 	dim_borough.borough_hkey,
-	dim_jurisdiction.jurisdiction_hkey ,
+	dim_jurisdiction.jurisdiction_hkey,
 	dim_offense_classification.classification_hkey ,
 	dim_offense_classification_group.offense_classification_group_hkey ,
 	dim_parks.parks_hkey ,

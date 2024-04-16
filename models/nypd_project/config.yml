@@ -1,0 +1,198 @@
+models:
+  - name: dim_complaint
+    description: complaint (crime) main dimension with relevant descriptive data to the crime
+    columns:
+      - name: complaint_number
+        description: complaint number
+        tests:
+          - string_not_null
+          - unique
+    
+      - name: complaint_from_dt
+        tests:
+          - string_not_null
+                 
+  - name: fct_complaint
+    description: fact data for complaints such as attempted crime or a crime was a violation or felony
+    columns:
+      - name: complaint_hkey
+        description: foreign key to the complaint desciptive data
+        tests:
+          - relationships:
+              to: ref('dim_complaint')
+              field: complaint_hkey
+          - unique
+
+      - name: patrol_borough_hkey
+        description: foreign key to the patrol borough in which the incident occurred
+        tests:
+          - relationships:
+              to: ref('dim_patrol_borough')
+              field: patrol_borough_hkey
+
+      - name: suspect_age_group_hkey
+        description: foreign key to the suspect's age group
+        tests:
+          - relationships:
+              to: ref('dim_age_group')
+              field: age_group_hkey
+
+      - name: victim_age_group_hkey
+        description: foreign key to the victims's age group
+        tests:
+          - relationships:
+              to: ref('dim_age_group')
+              field: age_group_hkey
+
+      - name: borough_hkey
+        description: foreign key to borough in which the incident occurred
+        tests:
+          - relationships:
+              to: ref('dim_borough')
+              field: borough_hkey
+
+      - name: jurisdiction_hkey
+        description: foreign key to jurisdiction description
+        tests:
+          - relationships:
+              to: ref('dim_jurisdiction')
+              field: jurisdiction_hkey
+
+      - name: classification_hkey
+        description: foreign key to the internal classification description of the offense
+        tests:
+          - relationships:
+              to: ref('dim_offense_classification')
+              field: classification_hkey
+
+      - name: offense_classification_group_hkey
+        description: foreign key to the offense classification group
+        tests:
+          - relationships:
+              to: ref('dim_offense_classification_group')
+              field: offense_classification_group_hkey
+
+      - name: parks_hkey
+        description: foreign key to the parks where the crime has happened
+        tests:
+          - relationships:
+              to: ref('dim_parks')
+              field: parks_hkey
+
+      - name: premises_hkey
+        description: foreign key to the premises of the crime
+        tests:
+          - relationships:
+              to: ref('dim_premises')
+              field: premises_hkey
+
+      - name: suspect_race_hkey
+        description: foreign key to the race of the suspect
+        tests:
+          - relationships:
+              to: ref('dim_race')
+              field: race_hkey
+
+      - name: victim_race_hkey
+        description: foreign key to the race of the victim
+        tests:
+          - relationships:
+              to: ref('dim_race')
+              field: race_hkey
+
+      - name: suspect_sex_hkey
+        description: foreign key to the sex of the suspect
+        tests:
+          - relationships:
+              to: ref('dim_sex')
+              field: sex_hkey    
+
+      - name: victim_sex_hkey
+        description: foreign key to the sex of the victim
+        tests:
+          - relationships:
+              to: ref('dim_sex')
+              field: sex_hkey
+
+  - name: nypd_trg
+    columns: 
+      - name: susp_age_group
+        tests:
+          - accepted_values: 
+              values: ['<18', '18-24', '25-44', '45-64', '65+']        
+          - not_null_as_string
+
+    columns: 
+      - name: vic_age_group
+        tests:
+          - accepted_values: 
+              values: ['<18', '18-24', '25-44', '45-64', '65+']
+          - not_null_as_string
+
+      - name: boro_nm
+        tests:
+          - not_null_as_string
+
+      - name: crm_atpt_cptd_cd
+        tests:
+          - not_null_as_string
+
+      - name: hadevelopt
+        tests:
+          - not_null_as_string
+
+      - name: juris_desc
+        tests:
+          - not_null_as_string
+
+      - name: law_cat_cd
+        tests:
+          - not_null_as_string
+
+      - name: loc_of_occur_desc
+        tests:
+          - not_null_as_string
+
+      - name: ofns_desc
+        tests:
+          - not_null_as_string
+
+      - name: parks_nm
+        tests:
+          - not_null_as_string
+
+      - name: patrol_boro
+        tests:
+          - not_null_as_string         
+
+      - name: pd_desc
+        tests:
+          - not_null_as_string
+
+      - name: prem_typ_desc
+        tests:
+          - not_null_as_string
+
+      - name: station_name
+        tests:
+          - not_null_as_string
+
+      - name: susp_race
+        tests:
+          - not_null_as_string
+
+      - name: vic_race
+        tests:
+          - not_null_as_string
+
+      - name: vic_sex
+        tests:
+          - not_null_as_string
+
+      - name: susp_sex
+        tests:
+          - not_null_as_string
+
+      - name: cmplnt_num
+        tests:
+          - unique
