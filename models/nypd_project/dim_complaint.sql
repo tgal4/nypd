@@ -1,5 +1,8 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
+
 WITH complaint_source AS (
 	SELECT 
 		cmplnt_num AS complaint_number,

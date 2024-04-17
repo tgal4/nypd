@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH parks_source AS (
 	SELECT DISTINCT  
 		COALESCE(parks_nm, 'UNKNOWN') AS parks

@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH premises_source AS (
 	SELECT DISTINCT  
 		COALESCE(prem_typ_desc, 'UNKNOWN') AS premises

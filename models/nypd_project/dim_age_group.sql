@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH age_group_source AS (
 	SELECT DISTINCT  
 		susp_age_group AS age_group -- ALWAYS filled

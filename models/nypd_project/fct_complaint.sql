@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH fct_source AS (
 SELECT 
 	cmplnt_num,

@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH jurisdiction_source AS (
 	SELECT DISTINCT  
 		jurisdiction_code AS jurisdiction_code, -- always filled, dummy value NOT needed so far

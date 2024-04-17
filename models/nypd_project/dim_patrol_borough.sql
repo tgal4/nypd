@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH patrol_borough_source AS (
 	SELECT DISTINCT  
 		patrol_boro AS patrol_borough -- ALWAYS filled

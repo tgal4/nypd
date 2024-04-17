@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH classification_source AS (
 	SELECT DISTINCT 
 		COALESCE(pd_cd,-1) as classicifaction_code, 

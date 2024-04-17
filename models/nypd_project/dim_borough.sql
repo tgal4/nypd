@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH borough_source AS (
 	SELECT DISTINCT  
 		COALESCE(boro_nm, 'UNKNOWN') AS borough

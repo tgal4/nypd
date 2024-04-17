@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH sex_source AS (
 	SELECT DISTINCT  
 		susp_sex AS sex

@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH offense_classification_group_source AS (
 	SELECT DISTINCT  
 		COALESCE(ky_cd, -1) AS offense_classicifaction_group_code, -- always filled, dummy value NOT needed so far

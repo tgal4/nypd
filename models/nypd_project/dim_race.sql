@@ -1,5 +1,7 @@
 {{ config(materialized='table') }}
 
+{{ config(tags=["DM"]) }}
+
 WITH race_source AS (
 	SELECT DISTINCT  
 		susp_race AS race -- ALWAYS filled
